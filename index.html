@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <style>
+        body{
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,1) 100%);
+        }
+        main{
+            display: flex;
+            flex-direction: row;
+        }
+        .user{
+            margin: 100px 200px;
+            height: 300px;
+            width: 400px;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+        }
+        input{
+            margin: 20px 80px 0px;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+        }
+        button{
+            margin-left: 90px;
+            border: none;
+            padding: 15px;
+            width: 200px;
+            font-size: 1rem;
+        }
+        h2{
+            text-align: center;
+            color: white;
+        }
+        .local{
+            color: white;
+            margin-right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <div class="user">
+    <h2>Juros 10%</h2>
+    <input type="text" id="valor" placeholder="valor">
+    <input type="text" id="parcela" placeholder="parcelas"><br><br>
+    <button>Calcular</button>
+    </div>
+    <div class="local">
+    <div class="result"></div>
+    </div>
+    </main>
+</body>
+<script>
+    function multiplication_table(valor, parcela){
+        var valorParcela = valor/parcela;
+        let attemp_str = '';
+        var contador = 1;
+        var juros = 1.1;
+        
+        for(let contador=1; contador<=parcela; contador++){
+            valorParcela *= juros;
+            attemp_str += `${valorParcela.toFixed(2)} <br>`;
+        }
+        return attemp_str;
+    }
+    document.querySelector('button').addEventListener('click', ()=>{
+        let valor = document.querySelector('#valor').value;
+        let parcela = document.querySelector('#parcela').value;
+        document.querySelector('.result').innerHTML = multiplication_table(valor, parcela)
+    }) 
+</script>
+</html>
